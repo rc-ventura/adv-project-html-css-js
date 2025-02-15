@@ -28,6 +28,14 @@
 
         h2 {
             margin-bottom: 5px;
+            font-size: 36px;
+            
+        }
+
+        
+
+        p {
+            font-size: 18px;
         }
         
         /* 🔹 HEADER COM TAMANHO MAIOR */
@@ -456,27 +464,13 @@ nav ul li a {
 
         }
 
-        .services p {
-            color: var(--primary-color);
-        }
-        
-        .services h2 {
-          
+    
+        .service-titulo {
             color: var(--accent-color);
+            margin-bottom: 50px;
         }
-        
-        .sobre-nos, .diferenciais {
-        background-color: var(--background-color);
 
-        }
-        
-        .sobre-nos, .diferenciais h2 {
-            color: var(--primary-color);
-        }
-        
-        .sobre-nos, .diferenciais p {
-            color: var(--text-color);
-        }
+    
         
         
         .depoimentos {
@@ -486,6 +480,8 @@ nav ul li a {
         .depoimentos h2 {
             color: var(--primary-color);
         }
+
+        
         
         .services,  .depoimentos {
             padding: 40px 20px;
@@ -506,16 +502,17 @@ nav ul li a {
         flex-wrap: wrap;
     }
         .service-card {
-        width: 250px;
+        width: 300px;
         background: white;
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
         text-align: center;
+        margin: 20px;
     }
     .service-image {
         width: 100%;
-        height: 250px;
+        height: 300px;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -579,30 +576,33 @@ nav ul li a {
     flex: 1 1 45%; /* Ocupa 45% do espaço disponível */
     text-align: center;
     min-width: 200px; /* Evita que quebre em telas menores */
+    
 }
+
+
 
 /* O terceiro ícone quebra para baixo */
 .diferencial-full {
     flex: 1 1 100%; /* Ocupa toda a largura abaixo */
     text-align: center;
-    margin-top: 20px;
+    
 }
 
 /* Estilo dos ícones */
 .diferencial img {
-    width: 50px;
-    height: 50px;
+    width: 150px;
+    height: 150px;
 }
 
 .diferencial h3 {
     color: var(--accent-color);
     margin-top: 10px;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .diferencial p {
     color: var(--accent-color);
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 5px;
 }
 
