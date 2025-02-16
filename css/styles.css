@@ -665,12 +665,16 @@ nav ul li a {
     padding: 15px;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    text-align: left;
+    text-align: center;
     height: auto;
-    min-height: 150px;
+    min-height: 200px;
     position: relative;
     flex: 1 1 300px; /* Permite que os cards se ajustem em telas menores */
     max-width: 90%; /* Evita que os cards fiquem muito largos em telas pequenas */
+}
+
+.review-card p {
+    margin-top: 30px;
 }
 
 
