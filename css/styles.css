@@ -26,6 +26,25 @@
         overflow-x: hidden; /* Evita rolagem lateral */
         }
 
+        section {
+            opacity: 0;
+            transform: translateY(50px); /* Começa um pouco para baixo */
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        
+        section.visivel {
+            opacity: 1;
+            transform: translateY(0); /* Volta para a posição original */
+        }
+        
+        section.invisivel {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        
+       
+
         h2 {
             margin-bottom: 5px;
             font-size: 36px;
