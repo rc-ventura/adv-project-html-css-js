@@ -117,15 +117,14 @@ nav ul li a {
 }
 
 /* 🔹 MENU HAMBURGUER PARA MOBILE */
-/* 🔹 Alinha o menu hambúrguer à direita */
 .menu-toggle {
     display: none;
     flex-direction: column;
     cursor: pointer;
     position: absolute;
-    right: 20px; /* Mantém ele alinhado mais à direita */
-    top: 20px; /* Ajusta a posição vertical */
-    z-index: 1000; /* Garante que fique sempre visível */
+    right: 20px;
+    top: 20px;
+    z-index: 1001;
 }
 
 /* 🔹 Ajuste dos traços do ícone */
@@ -134,6 +133,7 @@ nav ul li a {
     height: 3px;
     background-color: var(--accent-color);
     margin: 5px 0;
+    transition: transform 0.3s ease-in-out;
 }
 
 /* 🔹 Responsividade do menu */
@@ -142,22 +142,27 @@ nav ul li a {
         display: flex;
     }
 
-    nav ul {
-        display: none;
+    .nav-list {
+        display: none; /* ✅ Agora o menu começa escondido */
+        opacity: 0;
         flex-direction: column;
         position: absolute;
-        top: 80px; /* Mantém distância do topo */
-        right: 0; /* Mantém alinhado à direita */
+        top: 80px;
+        right: 0;
         background-color: var(--primary-color);
         width: 100%;
         text-align: center;
         padding: 15px 0;
+        z-index: 1000;
     }
 
-    nav ul.active {
-        display: flex;
+    .nav-list.active {
+        display: flex; /* ✅ Agora ele aparece quando a classe 'active' é adicionada */
+        opacity: 1;
+        visibility: visible;
     }
 }
+
 
 
 /* 🔹 Container principal do banner */
