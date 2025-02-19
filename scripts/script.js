@@ -1,4 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
+  //================= ABERTURA MENU HAMBURGER =========================
+  
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navList = document.querySelector(".nav-list");
+
+    if (menuToggle) {
+        menuToggle.addEventListener("click", function () {
+            if (navList) {
+                navList.classList.toggle("active");
+                menuToggle.classList.toggle("open");
+            } else {
+                console.error("Erro: Elemento '.nav-list' não encontrado!");
+            }
+        });
+    } else {
+        console.error("Erro: Elemento '.menu-toggle' não encontrado!");
+    }
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
     // ==================== 🎬 ANIMAÇÃO DO BANNER ====================
     function animarBanner() {
         const video = document.querySelector(".video-bg");
@@ -77,4 +99,29 @@ document.addEventListener("DOMContentLoaded", function () {
     // ==================== 🔥 INICIALIZAÇÃO ====================
     animarBanner(); // Chama a animação do banner
     animarSecoes(); // Chama a animação das seções
+});
+
+//======================= EMAIL SERVER ===========================
+// Inicializa o EmailJS com sua chave pública
+emailjs.init("wjGU3ZV13Y3VYsnzZ"); // Substitua pela sua chave pública do EmailJS
+
+// Aguarda o envio do formulário
+ document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form")
+    
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Evita recarregar a página
+
+        // Envia o formulário via EmailJS
+        emailjs.sendForm("service_7b4mebp", "template_1l6i3vr", form)
+            .then(function () {
+                alert("Mensagem enviada com sucesso!");
+                form.reset();
+
+            }, function (error) {
+                alert("Erro ao enviar: " + JSON.stringify(error));
+                form.reset();
+            });
+    });
+    
 });
