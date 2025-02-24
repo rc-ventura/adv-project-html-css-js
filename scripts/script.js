@@ -125,3 +125,65 @@ emailjs.init("wjGU3ZV13Y3VYsnzZ"); // Substitua pela sua chave pública do Email
     });
     
 });
+
+//=======================REQUEST GOOGLE REVIEW ========================
+
+// async function buscarPlaceID() {
+    
+//     const apiKey = "AIzaSyBFM-J-L2tGzgEabYOv9ZXESdfHOYGY6Yw";
+//     const url = "https://places.googleapis.com/v1/places:searchText";
+
+
+//    const body = {
+//     textQuery: "Bonini & Bender Advocacia, Brasil"
+//    };
+
+//    try {
+//     const response = await fetch(url, {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//             "X-Goog-Api-Key": apiKey,
+//             "X-Goog-FieldMask": "places.id,places.displayName,places.formattedAddress"
+//         },
+//         body: JSON.stringify(body)
+//     });
+   
+//     const data = await response.json();
+//     console.log(data);
+
+//     if (data.places && data.places.length > 0) {
+//         console.log("✅ Place ID:", data.places[0].id);
+//         console.log("📍 Nome:", data.places[0].displayName.text);
+//         console.log("📍 Endereço:", data.places[0].formattedAddress);
+//     } else {
+//         console.log("❌ Nenhum resultado encontrado.");
+//     }
+// } catch (error) {
+//     console.error("Erro ao buscar Place ID:", error);
+// }
+// }
+
+// buscarPlaceID();
+
+
+// async function getGoogleReviews() {
+//     const apiKey = "AIzaSyBFM-J-L2tGzgEabYOv9ZXESdfHOYGY6Yw";
+//     const query = "Bonini & Bender Advocacia"
+
+//     const url = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURIComponent(query)}&inputtype=textquery&fields=place_id&key=${apiKey}`;
+
+//     try {
+//         const res = await fetch(url);
+//         const data = await res.json();
+
+//         if(data.candidates.length > 0) {
+//             console.log("Place ID:", data.candidates[0].place_id);
+//         } else {
+//             console.log("ID Place not found");
+//         }
+//     }catch(error) {
+//         console.error("Error finding ", error);
+//     }
+
+

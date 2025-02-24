@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=The+Seasons:wght@400;700&display=swap');
 
         
         :root {
@@ -8,11 +7,15 @@
             --accent-color: #DECAAF;
             --card-color: #BBC2CC;
             --text-color: #3A3939;
+            font-family: the-seasons, sans-serif;
+            font-style: normal;
+            font-weight: 300;
         }
 
         * {
             box-sizing: border-box;
             max-width: 100%;
+            
         }
         
         body {
@@ -24,6 +27,8 @@
         width: 100vw;
         max-width: 100%;
         overflow-x: hidden; /* Evita rolagem lateral */
+        
+        
         }
 
         section {
@@ -90,7 +95,7 @@ header {
 /* 🔹 Ajuste do LOGO */
 .logo img {
     width: 100px; /* Ajustado para um tamanho maior */
-    margin-left: 20px; /* Mantém alinhado à esquerda */
+    margin-left: 20rem; /* Mantém alinhado à esquerda */
 }
 
 /* 🔹 Ajuste do MENU */
@@ -406,13 +411,12 @@ nav ul li a {
         align-items: center; /* 🔥 Mantém o texto alinhado à esquerda */
         text-align: center;
         margin-left: 0; /* 🔥 Ajusta para manter posição correta */
-        align-items: center;
         justify-content: center;
+        width: 100%;
     }
 
     .texto-container p {
-        margin-top: 30px;
-        margin-left: 250px;
+        margin-left: 0px;
         max-width: 320px;
 
     }
