@@ -17,8 +17,11 @@
             max-width: 100%;
             
         }
+
+  
+
         
-        body {
+        html, body {
         font-family: 'The Seasons', serif;
         margin: 0;
         padding: 0;

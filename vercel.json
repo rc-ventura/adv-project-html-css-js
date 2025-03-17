@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/dba(.*)",
+        "destination": "https://45.148.96.21/dba$1"
+      }
+    ]
+  }
+  

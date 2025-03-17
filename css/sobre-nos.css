@@ -1,0 +1,58 @@
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .descricao {
+            margin: 10px ;
+            font-size: 18px;
+        }
+
+        .descricao h3 {
+            padding: 5px;
+            
+        }
+
+        .descricao p {
+            margin-bottom: 50px;
+            
+        }
+        .swiper-container {
+            width: 100%;
+            height: 150px;
+        }
+        .swiper-slide img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .advogados {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .advogado {
+            width: 250px;
+            padding: 20px;
+            background: #f4f4f4;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .advogado img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .redes-sociais a {
+            margin: 5px;
+            display: inline-block;
+        }

@@ -1,22 +1,36 @@
+
+//======================= HEADER E FOOTER ===========================
+
 document.addEventListener("DOMContentLoaded", function () {
-  //================= ABERTURA MENU HAMBURGER =========================
-  
+    fetch("header.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("header-container").innerHTML = data;
+            initializeMenuToggle(); // Agora só será chamado depois que o header carregar
+        })
+        .catch(error => console.error("Erro ao carregar o header: " + error));
+
+    fetch("footer.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("footer-container").innerHTML = data)
+        .catch(error => console.error("Erro ao carregar o footer:", error));
+});
+
+// ================== ABERTURA MENU HAMBURGER =========================
+function initializeMenuToggle() {
     const menuToggle = document.querySelector(".menu-toggle");
     const navList = document.querySelector(".nav-list");
 
-    if (menuToggle) {
+    if (menuToggle && navList) {
         menuToggle.addEventListener("click", function () {
-            if (navList) {
-                navList.classList.toggle("active");
-                menuToggle.classList.toggle("open");
-            } else {
-                console.error("Erro: Elemento '.nav-list' não encontrado!");
-            }
+            navList.classList.toggle("active");
+            menuToggle.classList.toggle("open");
         });
     } else {
-        console.error("Erro: Elemento '.menu-toggle' não encontrado!");
+        console.error("Erro: Elemento '.menu-toggle' ou '.nav-list' não encontrado após o carregamento do header!");
     }
-});
+}
+
 
 
 
