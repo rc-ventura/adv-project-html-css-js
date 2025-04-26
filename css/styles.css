@@ -1,973 +1,1107 @@
-
-        
-        :root {
-            --primary-color: #1D2849;
-            --secondary-color: #3A3939;
-            --background-color: #EDE7DC;
-            --accent-color: #DECAAF;
-            --card-color: #BBC2CC;
-            --text-color: #3A3939;
-            font-family: the-seasons, sans-serif;
-            font-style: normal;
-            font-weight: 300;
-        }
-
-        * {
-            box-sizing: border-box;
-            max-width: 100%;
-            
-        }
-
-  
-
-        
-        html, body {
-        font-family: 'The Seasons', serif;
-        margin: 0;
-        padding: 0;
-        background-color: var(--background-color);
-        color: var(--text-color);
-        width: 100vw;
-        max-width: 100%;
-        overflow-x: hidden; /* Evita rolagem lateral */
-        
-        
-        }
-
-        section {
-            opacity: 0;
-            transform: translateY(50px); /* Começa um pouco para baixo */
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-        
-        section.visivel {
-            opacity: 1;
-            transform: translateY(0); /* Volta para a posição original */
-        }
-        
-        section.invisivel {
-            opacity: 0;
-            transform: translateY(50px);
-        }
-        
-
-        h2 {
-            margin-bottom: 5px;
-            font-size: 36px;     
-        }
-
-
-        p {
-            font-size: 18px;
-        }
-        
-        /* 🔹 HEADER COM TAMANHO MAIOR */
-header {
-    background-color: var(--primary-color);
-    color: var(--accent-color);
-    padding: 20px 0; /* Aumenta o padding vertical */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 80px; /* Aumenta a altura do header */
-    position: relative;
+:root {
+  --primary-color: #1d2849;
+  --secondary-color: #3a3939;
+  --background-color: #ede7dc;
+  --accent-color: #decaaf;
+  --card-color: #bbc2cc;
+  --text-color: #3a3939;
+  font-family: the-seasons, sans-serif;
+  font-style: normal;
+  font-weight: 300;
 }
 
-/* 🔹 Estilizando o botão */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+html,
+body {
+  font-family: "The Seasons", serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden; /* Evita rolagem lateral */
+  overflow-y: auto; /* Permite rolagem vertical normalmente */
+}
+
+body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE e Edge */
+}
+
+section {
+  opacity: 1;
+  transform: none;
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+section.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section.invisivel {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+h2 {
+  margin-bottom: 24px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--primary-color);
+  line-height: 1.2;
+}
+
+p {
+  font-size: 18px;
+}
+
+/* HEADER COM TAMANHO MAIOR */
+header {
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  padding: 20px 0; /* Aumenta o padding vertical */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px; /* Aumenta a altura do header */
+  position: relative;
+}
+
+header,
+.nav-list,
+.nav-list a {
+  font-family: "The Seasons", serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--accent-color);
+}
+
+/* Estilizando o botão */
 .button {
-    background-color: #f4b400;
-    color: white;
-    border: none;
-    padding: 14px 28px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: 0.3s;
-    border-radius: 5px;
-    margin-right: 30px;
+  background: var(--primary-color) !important;
+  color: var(--accent-color) !important;
+  border: none;
+  border-radius: 5px; /* Volta ao leve arredondado original */
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  min-width: 170px;
+  padding: 16px 36px;
+  font-size: 18px;
+  font-family: inherit;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  outline: none;
+  display: inline-block;
 }
 
 .button:hover {
-    background-color: #e09e00;
+  background-color: #e09e00 !important;
+  color: #fff !important;
+  filter: brightness(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
-/* 🔹 Ajuste do LOGO */
+.button:focus {
+  outline: 2px solid #e09e00;
+  outline-offset: 2px;
+}
+
+.button:active {
+  filter: brightness(0.97);
+  transform: scale(0.98);
+}
+
+@media (max-width: 900px) {
+  .button {
+    width: 100%;
+    max-width: 300px;
+    min-width: unset;
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+}
+
+/* Ajuste do LOGO */
 .logo img {
-    width: 100px; /* Ajustado para um tamanho maior */
-    margin-left: 2rem; /* Mantém alinhado à esquerda */
+  width: 100px; /* Ajustado para um tamanho maior */
+  margin-left: 2rem; /* Mantém alinhado à esquerda */
 }
 
-/* 🔹 Ajuste do MENU */
+/* Ajuste do MENU */
 nav {
-    flex: 1;
-    display: flex;
-    justify-content: center; /* Centraliza os links no header */
+  flex: 1;
+  display: flex;
+  justify-content: center; /* Centraliza os links no header */
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    gap: 3rem; /* Ajusta o espaçamento entre links */
-    margin: 0;
-    padding: 0;
-    align-items: center; /* Mantém alinhado verticalmente */
+  list-style: none;
+  display: flex;
+  gap: 3rem; /* Ajusta o espaçamento entre links */
+  margin: 0;
+  padding: 0;
+  align-items: center; /* Mantém alinhado verticalmente */
 }
 
 nav ul li a {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-size: 18px; /* Aumenta o tamanho da fonte */
-    font-weight: bold;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-size: 18px; /* Aumenta o tamanho da fonte */
+  font-weight: bold;
 }
 
-/* 🔹 MENU HAMBURGUER PARA MOBILE */
+/* MENU HAMBURGUER PARA MOBILE */
 .menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    z-index: 1001;
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 1001;
 }
 
-/* 🔹 Ajuste dos traços do ícone */
+/* Ajuste dos traços do ícone */
 .menu-toggle div {
-    width: 30px;
-    height: 3px;
-    background-color: var(--accent-color);
-    margin: 5px 0;
-    transition: transform 0.3s ease-in-out;
+  width: 30px;
+  height: 3px;
+  background-color: var(--accent-color);
+  margin: 5px 0;
+  transition: transform 0.3s ease-in-out;
 }
 
-/* 🔹 Responsividade do menu */
+/* Responsividade do menu */
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-    }
-
-    .nav-list {
-        display: none; /* ✅ Agora o menu começa escondido */
-        opacity: 0;
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        right: 0;
-        background-color: var(--primary-color);
-        width: 100%;
-        text-align: center;
-        padding: 15px 0;
-        z-index: 1000;
-    }
-
-    .nav-list.active {
-        display: flex; /* ✅ Agora ele aparece quando a classe 'active' é adicionada */
-        opacity: 1;
-        visibility: visible;
-    }
-}
-
-
-
-/* 🔹 Container principal do banner */
-.banner {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* Ocupa toda a tela */
+  .menu-toggle {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
+  }
 
-/* 🔹 Ajuste do vídeo para cobrir todo o banner */
-.video-bg {
+  .nav-list {
+    display: none; /* Agora o menu começa escondido */
+    opacity: 0;
+    flex-direction: column;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 80px;
+    right: 0;
+    background-color: var(--primary-color);
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Faz o vídeo preencher a tela sem distorcer */
-    transform: translate(-50%, -50%);
-    z-index: -1; /* Mantém o vídeo no fundo */
-}
-
-/* 🔹 Sobreposição para melhorar a leitura do texto */
-.banner-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Escurece levemente o vídeo */
-    z-index: 0;
-}
-
-/* 🔹 Texto centralizado sobre o vídeo */
-.banner-text {
-    position: absolute;
-    z-index: 1;
-    color: #DECAAF;
     text-align: center;
-    max-width: 800px;
-    padding: 20px;
+    padding: 15px 0;
+    z-index: 1000;
+  }
+
+  .nav-list.active {
+    display: flex; /* Agora ele aparece quando a classe 'active' é adicionada */
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Container principal do banner */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Ocupa toda a tela */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Ajuste do vídeo para cobrir todo o banner */
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.banner-text {
+  position: relative;
+  z-index: 2;
+  color: #decaaf;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .banner-text h1 {
-    font-size: 2.4rem;
-    margin-bottom: 20px;
+  font-size: 2.4rem;
+  margin-bottom: 20px;
 }
 
 .banner-text p {
-    font-size: 1.3rem;
-    margin-bottom: 40px;
+  font-size: 1.3rem;
+  margin-bottom: 40px;
 }
 
+/* RESPONSIVIDADE */
 
-
-/* 🔹 🔹 🔹 RESPONSIVIDADE 🔹 🔹 🔹 */
-
-/* 📌 Para tablets (médias telas) */
+/* Para tablets (médias telas) */
 @media (max-width: 1024px) {
-    .banner-text {
-        max-width: 80%;
-        padding: 15px;
-    }
+  .banner-text {
+    max-width: 80%;
+    padding: 15px;
+  }
 
-    .banner-text h1 {
-        font-size: 2.5rem;
-    }
+  .banner-text h1 {
+    font-size: 2.5rem;
+  }
 
-    .banner-text p {
-        font-size: 1.3rem;
-    }
+  .banner-text p {
+    font-size: 1.3rem;
+  }
 
-    .button {
-        font-size: 16px;
-        padding: 12px 24px;
-    }
+  .button {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
 }
 
-/* 📌 Para celulares (telas pequenas) */
+/* Para celulares (telas pequenas) */
 @media (max-width: 768px) {
-    .banner-text {
-        max-width: 90%;
-        padding: 10px;
-    }
+  .banner-text {
+    max-width: 90%;
+    padding: 10px;
+  }
 
-    .banner-text h1 {
-        font-size: 2rem; /* Diminui para não ficar grande demais */
-    }
+  .banner-text h1 {
+    font-size: 2rem; /* Diminui para não ficar grande demais */
+  }
 
-    .banner-text p {
-        font-size: 1.1rem;
-    }
+  .banner-text p {
+    font-size: 1.1rem;
+  }
 
-    .button {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
+  .button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
 }
 
-/* 📌 Para celulares bem pequenos */
+/* Para celulares bem pequenos */
 @media (max-width: 480px) {
-    .banner-text h1 {
-        font-size: 1.8rem;
-    }
+  .banner-text h1 {
+    font-size: 1.8rem;
+  }
 
-    .banner-text p {
-        font-size: 1rem;
-    }
+  .banner-text p {
+    font-size: 1rem;
+  }
 
-    .button {
-        font-size: 13px;
-        padding: 8px 16px;
-    }
+  .button {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
 }
-        /* Estilização do botão flutuante */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border: none;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
-            z-index: 1000;
-        }
+/* Estilização do botão flutuante */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+  z-index: 1000;
+}
 
-        /* Animação de Hover Manual */
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
+/* Animação de Hover Manual */
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
 
-        /* Ícone do WhatsApp */
-        .whatsapp-float img {
-            width: 50px;
-            height: 40px;
-        }
+/* Ícone do WhatsApp */
+.whatsapp-float img {
+  width: 50px;
+  height: 40px;
+}
 
-        /* Animação de Pulsação */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15);}
-            100% { transform: scale(1);  }
-        }
+/* Animação de Pulsação */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
-        /* Classe para ativar a animação */
-        .pulse-animation {
-            animation: pulse 1s ease-in-out;
-        }
+/* Classe para ativar a animação */
+.pulse-animation {
+  animation: pulse 1s ease-in-out;
+}
 
-
-/* 🔹 SOBRE NÓS */
-/* 🔹 SEÇÃO SOBRE NÓS */
+/* SOBRE NÓS */
+/* SEÇÃO SOBRE NÓS */
 .sobre-nos {
-    width: 100%;
-    padding: 50px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  width: 100%;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* 🔹 Container principal das imagens */
+.sobre-nos .button {
+  pointer-events: auto;
+  z-index: 9999;
+  position: relative;
+  opacity: 1;
+}
+
+/* Container principal das imagens */
 .sobre-container {
-    display: flex;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 10px; /* 🔥 Diminui o espaçamento entre as imagens */
-    width: 100%;
-    max-width: 1200px;
-    position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
-/* 🔹 Primeira imagem (Esquerda) */
+.sobre-container .button {
+  min-width: 170px;
+  padding: 16px 36px;
+  font-size: 18px;
+  align-self: center;
+}
+
+/* Primeira imagem (Esquerda) */
 .sobre-imagem.esquerda {
-    display: flex;
-    justify-content: flex-start; /* 🔥 Move mais para a direita */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .sobre-imagem.esquerda img {
-    max-width: 150px;
-    height: auto;
-    object-fit: contain;
+  max-width: 150px;
+  height: auto;
+  object-fit: contain;
 }
 
-/* 🔹 Segunda imagem (Direita) */
+/* Segunda imagem (Direita) */
 .sobre-imagem.direita {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start; /* 🔥 Move mais para a esquerda */
-    margin-left: -10px; /* 🔥 Puxa para perto da primeira imagem */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: -10px;
 }
 
 .sobre-imagem.direita img {
-    max-width: 400px;
-    height: auto;
-    object-fit: contain;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
 }
 
-/* 🔹 Texto abaixo da segunda imagem, mais à esquerda */
-.texto-container {
-    display: flex;
-    align-items: flex-start;
-    text-align: left;    
-    margin-left: 220px;
-    margin-top: -20px;
+.sobre-imagem.direita .texto-container {
+  margin-top: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0;
 }
 
-.texto-container p {
-    font-size: 1.2rem;
-    color: var(--primary-color);
+.sobre-imagem.direita .texto-container p {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin: 0;
 }
 
-/* 🔹 Botão alinhado à direita */
-.button-container {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    margin-top: -100px;
-    max-width: 1200px;
-    margin-bottom: 30px;
-}
-
-
-
-/* 📌 RESPONSIVIDADE */
-
-/* 📌 Telas médias (até 1024px) */
-@media (max-width: 1024px) {
-    .sobre-container {
-        gap: 5px; /* 🔥 Aproxima ainda mais as imagens */
-    }
-
-    .sobre-imagem.esquerda,
-    .sobre-imagem.direita {
-        justify-content: flex-start;
-    }
-
-    .texto-container {
-        text-align: left;
-        margin-left: 224px; /* 🔥 Mantém alinhado mais à esquerda */
-    }
-
-    .button-container {
-        justify-content: flex-end;
-    }
-}
-
-/* 📌 Telas menores (até 768px): Alinha tudo em coluna */
-@media (max-width: 768px) {
-    .sobre-container {
-        flex-direction: column; /* 🔥 Garante que tudo empilhe */
-        align-items: center; /* 🔥 Mantém tudo alinhado à esquerda */
-        text-align: center;
-        gap: 10px;
-    }
-
-    .sobre-imagem.esquerda,
-    .sobre-imagem.direita {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .sobre-imagem.esquerda img {
-        max-width: 120px; /* 🔥 Reduz o tamanho da imagem para melhor ajuste */
-    }
-
-    .sobre-imagem.direita img {
-        max-width: 320px; /* 🔥 Reduz para manter proporção */
-        margin-left: 0px; /* 🔥 Aproxima da imagem da esquerda */
-    }
-
-    .texto-container {
-        display: flex;
-        align-items: center; /* 🔥 Mantém o texto alinhado à esquerda */
-        text-align: center;
-        margin-left: 0; /* 🔥 Ajusta para manter posição correta */
-        justify-content: center;
-        width: 100%;
-    }
-
-    .texto-container p {
-        margin-left: 0px;
-        max-width: 320px;
-
-    }
-    .button-container {
-        justify-content: center;
-        width: 100%;
-        margin-top: 15px;
-    }
-}
-
-/* 📌 Telas muito pequenas (até 480px) */
-/* 📌 Ajustes para telas muito pequenas (≤480px) */
-@media (max-width: 480px) {
-    .sobre-container {
-        flex-direction: column; /* 🔥 Mantém tudo empilhado */
-        align-items: center;
-        text-align: center;
-        gap: 10px;
-    }
-
-    .sobre-imagem.esquerda, 
-    .sobre-imagem.direita {
-        display: flex;
-        justify-content: center; /* 🔥 Centraliza ambas as imagens */
-        width: 100%;
-    }
-
-    .sobre-imagem.esquerda img {
-        max-width: 100px; /* 🔥 Reduz ainda mais a primeira imagem */
-    }
-
-    .sobre-imagem.direita img {
-        max-width: 280px; /* 🔥 Ajusta o tamanho para manter proporção */
-        margin-left: 0; /* 🔥 Remove deslocamento */
-    }
-
-    /* 📌 Garante que o P fique fixo abaixo da imagem e centralizado */
-    .texto-container {
-        width: 100%;
-        display: flex;
-        justify-content: center; /* 🔥 Centraliza o texto */
-        align-items: center;
-        text-align: center;
-        margin: 0 auto;
-        margin-top: 10px;
-    }
-
-    .texto-container p {
-        font-size: 1rem; /* 🔥 Reduz o tamanho para telas pequenas */
-        color: var(--primary-color);
-        max-width: 100%; /* 🔥 Mantém um limite para não ficar muito largo */
-        margin: 0 auto;
-        margin-bottom: 20px;
-
-    }
-
-    /* 📌 Botão centralizado corretamente abaixo do texto */
-    .button-container {
-        display: flex;
-        justify-content: center; /* 🔥 Centraliza o botão */
-        width: 100%;
-        margin-top: 15px;
-    }
-}
-
-
-
-
-        .services {
-            padding: 40px 20px;
-            text-align: center;
-            background-color: var(--primary-color);
-
-        }
-
-    
-        .service-titulo {
-            color: var(--accent-color);
-            margin-bottom: 50px;
-        }
-
-    
-        
-        
-        .depoimentos {
-            background-color: var(--card-color);
-        }
-        
-        .depoimentos h2 {
-            color: var(--primary-color);
-        }
-
-        
-        
-        .services,  .depoimentos {
-            padding: 40px 20px;
-            text-align: center;
-        }
-        
-          .reviews {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-
-        .service-list {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
-        .service-card {
-        width: 300px;
-        background: var(--accent-color);
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        margin: 20px;
-        border: 0.5px solid white;
-    }
-    .service-image {
-        width: 100%;
-        height: 300px;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .service-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .service-caption {
-        background-color: var(--primary-color);
-        padding: 10px;
-        font-weight: normal;
-        color: white;
-        border: white 0.5px solid ;
-    }
-    
-    .diferenciais {
-    background-color: var(--primary-color);
-    padding: 50px 20px;
-}
-
-.diferenciais-container {
-    display: flex;
+@media (max-width: 900px) {
+  .sobre-container {
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
-}
-
-/* Texto à esquerda */
-.diferenciais-texto {
-    flex: 1;
-    text-align: left;
-}
-
-.diferenciais-texto h2 {
-    color: var(--accent-color);
-    margin-bottom: 10px;
-}
-
-.diferenciais-texto p {
-    color: var(--accent-color);
-    font-size: 18px;
-}
-
-/* Ícones organizados */
-.diferenciais-icones {
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
+    gap: 18px;
+    padding: 0 4px;
+  }
+  .sobre-imagem.esquerda {
     justify-content: center;
-    text-align: center;
-    gap: 20px;
-}
-
-/* Mantém os dois primeiros ícones lado a lado */
-.diferencial {
-    flex: 1 1 45%; /* Ocupa 45% do espaço disponível */
-    text-align: center;
-    min-width: 200px; /* Evita que quebre em telas menores */
-    
-}
-
-
-
-/* O terceiro ícone quebra para baixo */
-.diferencial-full {
-    flex: 1 1 100%; /* Ocupa toda a largura abaixo */
-    text-align: center;
-    
-}
-
-/* Estilo dos ícones */
-.diferencial img {
-    width: 150px;
-    height: 150px;
-}
-
-.diferencial h3 {
-    color: var(--accent-color);
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .sobre-imagem.direita {
+    margin-left: 0;
+    align-items: center;
+    width: 100%;
+  }
+  .sobre-imagem.direita img {
+    margin: 0 auto;
+    display: block;
+  }
+  .sobre-imagem.direita .texto-container {
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
     margin-top: 10px;
-    font-size: 22px;
-}
-
-.diferencial p {
-    color: var(--accent-color);
+  }
+  .sobre-imagem.direita .texto-container p {
+    text-align: center;
+    font-size: 1rem;
+  }
+  .sobre-container .button {
+    width: 100%;
+    max-width: 300px;
+    min-width: unset;
     font-size: 16px;
-    margin-top: 5px;
+    padding: 12px 20px;
+    align-self: center;
+    margin-top: 8px;
+  }
 }
 
-/* Ajuste responsivo */
-@media (max-width: 768px) {
-    .diferenciais-container {
-        flex-direction: column;
-        text-align: center;
-    }
+@media (max-width: 480px) {
+  .sobre-imagem.direita img {
+    max-width: 240px;
+  }
+  .sobre-imagem.esquerda img {
+    max-width: 80px;
+  }
+}
 
-    .diferenciais-texto {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+.services {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: var(--primary-color);
+}
 
-    .diferenciais-icones {
-        flex-direction: column;
-        gap: 15px;
-    }
+.service-titulo h2 {
+  color: var(--accent-color) !important;
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 24px !important;
+  opacity: 1 !important;
+  display: block !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
 
-    .diferencial {
-        flex: 1 1 100%; /* Em telas menores, tudo empilha */
-    }
+.service-titulo p {
+  color: var(--accent-color) !important;
+  font-size: 1.25rem;
+  margin-bottom: 0;
+}
+
+.service-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.service-card {
+  width: 300px;
+  background: var(--accent-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 20px;
+  border: 0.5px solid white;
+}
+.service-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-caption {
+  background-color: var(--primary-color);
+  padding: 10px;
+  font-weight: normal;
+  color: white;
+  border: white 0.5px solid;
+}
+
+.diferenciais {
+  background-color: var(--primary-color);
+  padding: 50px 20px;
+}
+.diferenciais-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+}
+.diferenciais-texto {
+  flex: 1;
+  text-align: left;
+}
+.diferenciais-texto h2 {
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+.diferenciais-texto p {
+  color: var(--accent-color);
+  font-size: 18px;
+}
+.diferenciais-icones {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+  gap: 40px;
+}
+.diferencial {
+  flex: 1 1 220px;
+  min-width: 220px;
+  max-width: 280px;
+  margin: 0 10px 30px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: none;
+  box-shadow: none;
+}
+.diferencial-full {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+.diferencial img {
+  width: 100px;
+  margin-bottom: 10px;
+}
+.diferencial-full img {
+  width: 80px;
+}
+.diferencial h3 {
+  color: var(--accent-color);
+  margin: 10px 0 5px 0;
+}
+.diferencial p {
+  color: var(--accent-color);
+  font-size: 16px;
+  margin-top: 5px;
+}
+@media (max-width: 900px) {
+  .diferenciais-icones {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .diferencial,
+  .diferencial-full {
+    max-width: 100%;
+    min-width: 0;
+  }
 }
 
 .depoimentos {
-    background-color: var(--background-color);
-    padding: 50px 20px;
-    text-align: center;
+  background-color: var(--background-color);
+  padding: 50px 20px;
+  text-align: center;
 }
 
 .depoimentos h2 {
-    color: var(--primary-color);
-    margin-bottom: 5px;
+  color: var(--primary-color);
+  margin-bottom: 5px;
 }
 
 .subtitulo {
-    font-size: 18px;
-    color: var(--text-color);
-    margin-bottom: 30px;
+  font-size: 18px;
+  color: var(--text-color);
+  margin-bottom: 30px;
 }
 
-/* 🔹 Container dos cards */
+/* Container dos cards */
 .reviews {
-    display: flex;
-    justify-content: center; /* Centraliza os cards */
-    gap: 20px;
-    flex-wrap: wrap; /* Permite que os cards quebrem linha em telas menores */
-    width: 100%; /* Garante que ocupe a largura total */
-    max-width: 1200px;
-    margin: 0 auto; /* Centraliza dentro da página */
+  display: flex;
+  justify-content: center; /* Centraliza os cards */
+  gap: 20px;
+  flex-wrap: wrap; /* Permite que os cards quebrem linha em telas menores */
+  width: 100%; /* Garante que ocupe a largura total */
+  max-width: 1200px;
+  margin: 0 auto; /* Centraliza dentro da página */
 }
 
 /* Card do review */
-/* 🔹 Ajuste dos cards individuais */
+/* Ajuste dos cards individuais */
 .review-card {
-    width: 300px; /* Mantém o tamanho fixo */
-    background-color: var(--primary-color);
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    height: auto;
-    min-height: 200px;
-    position: relative;
-    flex: 1 1 300px; /* Permite que os cards se ajustem em telas menores */
-    max-width: 90%; /* Evita que os cards fiquem muito largos em telas pequenas */
+  width: 300px; /* Mantém o tamanho fixo */
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  height: auto;
+  min-height: 200px;
+  position: relative;
+  flex: 1 1 300px; /* Permite que os cards se ajustem em telas menores */
+  max-width: 90%; /* Evita que os cards fiquem muito largos em telas pequenas */
 }
 
 .review-card p {
-    margin-top: 30px;
+  margin-top: 30px;
 }
-
 
 /* Cabeçalho do review (box branco) */
 .review-header {
-    background-color: white;
-    padding: 10px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Alinha os elementos horizontalmente */
-    gap: 10px;
-    margin-bottom: 15px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Alinha os elementos horizontalmente */
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 /* Avatar */
 .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 /* Nome do cliente */
 .review-name {
-    flex-grow: 1; /* Faz o nome ocupar o espaço disponível entre avatar e estrelas */
-    color: var(--primary-color);
-    font-size: 16px;
-    margin: 0;
-    text-align: left;
+  flex-grow: 1; /* Faz o nome ocupar o espaço disponível entre avatar e estrelas */
+  color: var(--primary-color);
+  font-size: 16px;
+  margin: 0;
+  text-align: left;
 }
 
 /* Estrelas alinhadas à direita */
 .stars {
-    color: gold;
-    font-size: 16px;
-    white-space: nowrap; /* Evita quebra de linha */
+  color: gold;
+  font-size: 16px;
+  white-space: nowrap; /* Evita quebra de linha */
 }
 
-/* 🔹 Ajuste responsivo para garantir alinhamento em telas menores */
+/* Ajuste responsivo para garantir alinhamento em telas menores */
 @media (max-width: 768px) {
-    .reviews {
-        flex-direction: column;
-        align-items: center; /* Mantém os cards centralizados */
-    }
+  .reviews {
+    flex-direction: column;
+    align-items: center; /* Mantém os cards centralizados */
+  }
 
-    .review-card {
-        width: 80%; /* Faz os cards ocuparem 90% da tela em telas pequenas */
-        max-width: 280px; /* Mantém um limite máximo para não ficarem muito grandes */
-        max-height: 130px;
-    }
+  .review-card {
+    width: 80%; /* Faz os cards ocuparem 90% da tela em telas pequenas */
+    max-width: 280px; /* Mantém um limite máximo para não ficarem muito grandes */
+    max-height: 130px;
+  }
 }
 
 .contato {
-    background-color: var(--background-color);
-    padding: 50px 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: var(--background-color);
+  padding: 50px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .contato h2 {
-    color: var(--primary-color);
-    margin-bottom: 10px;
-    font-size: 28px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 28px;
 }
 
 .subtitulo {
-    color: var(--text-color);
-    margin-bottom: 30px;
-    font-size: 18px;
+  color: var(--text-color);
+  margin-bottom: 30px;
+  font-size: 18px;
 }
 
 /* Organização em grid para separar colunas */
 .contato-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Divide em duas colunas */
-    gap: 40px; /* Espaçamento entre colunas */
-    max-width: 800px;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Divide em duas colunas */
+  gap: 40px; /* Espaçamento entre colunas */
+  max-width: 800px;
+  width: 100%;
 }
 
 /* Ajuste para os inputs */
 .contato-coluna {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Espaçamento entre os elementos */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espaçamento entre os elementos */
 }
 
 /* Estilização do grupo de inputs */
 .input-group {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Labels com fundo igual ao do site */
 .input-group label {
-    font-weight: bold;
-    color: var(--accent-color);
-    padding: 5px ;
-    background-color: var(--primary-color);
-    display: block;
-    text-align: left;
-    font-size: 14px;
+  font-weight: bold;
+  color: var(--accent-color);
+  padding: 5px;
+  background-color: var(--primary-color);
+  display: block;
+  text-align: left;
+  font-size: 14px;
 }
 
 /* Inputs e textarea com fundo branco e mais finos */
 .input-group input,
 .input-group textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid var(--accent-color);
-    background-color: white;
-    border-radius: 5px;
-    font-size: 14px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--accent-color);
+  background-color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
 }
 
 /* Inputs mais finos */
 .input-group input {
-    height: 35px;
-    border: 1px solid var(--card-color);
+  height: 35px;
+  border: 1px solid var(--card-color);
 }
 
 /* Botão alinhado abaixo do formulário */
 .contato-botao {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 /* Responsivo para telas menores */
 @media (max-width: 768px) {
-    .contato-container {
-        grid-template-columns: 1fr; /* Empilha os elementos */
-        gap: 20px;
-    }
+  .contato-container {
+    grid-template-columns: 1fr; /* Empilha os elementos */
+    gap: 20px;
+  }
 }
-.button {
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: var(--accent-color);
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.button:hover {
-    opacity: 0.8;
-}
-
 .footer {
-    background-color: var(--primary-color);
-    color: var(--accent-color);
-    padding: 20px;
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  padding: 20px;
 }
 
-/* Container principal do footer */
 .footer-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
-/* Área da esquerda (logo e endereço) */
 .footer-left {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Estilização do logo */
 .footer-logo img {
-    width: 100px;
-    margin-bottom: 5px;
+  width: 70px;
+  margin-bottom: 8px;
 }
 
-/* Endereço abaixo do logo */
 .footer-endereco {
-    font-size: 14px;
-    margin: 0;
+  color: var(--accent-color);
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
 }
 
-/* Texto "Todos os direitos reservados" */
+.footer-social {
+  margin: 8px 0 8px 0;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.footer-social-btn {
+  color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.footer-social-btn:hover {
+  background: var(--accent-color);
+  color: var(--primary-color);
+  transform: translateY(-3px) scale(1.08);
+}
+
 .footer-direitos {
-    font-size: 14px;
-    text-align: right;
-    flex: 1;
+  font-size: 0.95rem;
+  margin: 0.8rem 0 0.3rem 0;
+  color: var(--accent-color);
 }
 
-/* Texto do crédito */
 .credit {
-    text-align: center;
-    font-size: 14px;
-    margin-top: 10px;
+  font-size: 0.85rem;
+  color: #bdbdbd;
+  margin-top: 8px;
 }
 
-/* Responsivo: em telas menores, alinha os itens ao centro */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .footer-left {
-        align-items: center;
-    }
-
-    .footer-direitos {
-        text-align: center;
-    }
+@media (max-width: 600px) {
+  .footer-container {
+    gap: 10px;
+  }
+  .footer-logo img {
+    width: 50px;
+  }
+  .footer-social {
+    gap: 10px;
+  }
 }
 
+/* ==== CTA SECTION (Serviços e Index) ==== */
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.md\:px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.bg-\[\#1d2849\] {
+  background-color: #1d2849;
+}
+.text-center {
+  text-align: center;
+}
+.max-w-4xl {
+  max-width: 56rem;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.text-3xl {
+  font-size: 1.875rem;
+}
+.md\:text-4xl {
+  font-size: 2.25rem;
+}
+.font-bold {
+  font-weight: bold;
+}
+.text-\[\#decaaf\] {
+  color: #decaaf;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+}
+.text-white {
+  color: #fff;
+}
+.mb-8 {
+  margin-bottom: 2rem;
+}
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.sm\:flex-row {
+  flex-direction: row;
+}
+.justify-center {
+  justify-content: center;
+}
+.gap-4 {
+  gap: 1rem;
+}
+.bg-\[\#f4b400\] {
+  background-color: #f4b400;
+}
+.hover\:bg-\[\#e09e00\]:hover {
+  background-color: #e09e00;
+}
+.text-white {
+  color: #fff;
+}
+.font-bold {
+  font-weight: bold;
+}
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.rounded {
+  border-radius: 0.25rem;
+}
+.transition {
+  transition: all 0.2s;
+}
+.bg-transparent {
+  background-color: transparent;
+}
+.border-2 {
+  border-width: 2px;
+}
+.border-\[\#decaaf\] {
+  border-color: #decaaf;
+}
+.hover\:bg-\[\#decaaf\]:hover {
+  background-color: #decaaf;
+}
+.hover\:text-\[\#1d2849\]:hover {
+  color: #1d2849;
+}
+.text-\[\#decaaf\] {
+  color: #decaaf;
+}
+
+/* SOBRE NÓS - Ajustes exclusivos */
+.hero-section {
+  background: linear-gradient(rgba(29, 40, 73, 0.8), rgba(29, 40, 73, 0.8)),
+    url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")
+      no-repeat center center;
+  background-size: cover;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  text-align: center;
+}
+.team-section {
+  padding: 60px 0;
+}
+.team-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--accent-color);
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+.team-card-content {
+  padding: 1.5rem;
+  color: var(--primary-color);
+}
+.team-specialty {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Exceções para títulos claros em fundo escuro */
+.diferenciais-texto h2,
+.depoimentos h2,
+.contato h2 {
+  color: var(--accent-color);
+}
+
+/* Seções especiais podem manter overrides se necessário */
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.social-link i {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+.social-link:hover {
+  background: #e09e00;
+}
+.social-link:hover i {
+  color: #fff;
+}

@@ -1,58 +1,104 @@
-        
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .descricao {
-            margin: 10px ;
-            font-size: 18px;
-        }
+/* SOBRE NÓS - Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(29, 40, 73, 0.8), rgba(29, 40, 73, 0.8)), url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80") no-repeat center center;
+  background-size: cover;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  text-align: center;
+}
 
-        .descricao h3 {
-            padding: 5px;
-            
-        }
+.hero-section h1 {
+  font-size: 2.8rem;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.hero-section p {
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
 
-        .descricao p {
-            margin-bottom: 50px;
-            
-        }
-        .swiper-container {
-            width: 100%;
-            height: 150px;
-        }
-        .swiper-slide img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            cursor: pointer;
-        }
-        .advogados {
-            margin-top: 40px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .advogado {
-            width: 250px;
-            padding: 20px;
-            background: #f4f4f4;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .advogado img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-        }
-        .redes-sociais a {
-            margin: 5px;
-            display: inline-block;
-        }
+/* Team Section */
+.team-section {
+  padding: 60px 0;
+}
+.team-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--accent-color);
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+.team-card-content {
+  padding: 1.5rem;
+  color: var(--primary-color);
+}
+.team-specialty {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Valores Section */
+.value-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 2rem 1.5rem;
+  margin: 1rem;
+  text-align: center;
+  color: var(--primary-color);
+}
+.value-card h3 {
+  color: var(--accent-color);
+  margin-bottom: 12px;
+}
+.value-card p {
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  .team-section {
+    padding: 40px 0;
+  }
+  .value-card {
+    padding: 1.2rem 0.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    height: 40vh;
+    padding: 1rem;
+  }
+  .hero-section h1 {
+    font-size: 1.3rem;
+  }
+  .team-section {
+    padding: 20px 0;
+  }
+  .value-card {
+    padding: 0.8rem 0.4rem;
+    margin: 0.5rem 0;
+  }
+}

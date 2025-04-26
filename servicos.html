@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serviços - Bonini & Bender Advocacia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script defer src="scripts/script.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #1d2849;
+        --secondary-color: #3a3939;
+        --background-color: #ede7dc;
+        --accent-color: #decaaf;
+        --card-color: #bbc2cc;
+        --text-color: #3a3939;
+        font-family: the-seasons, sans-serif;
+        font-style: normal;
+        font-weight: 300;
+      }
+
+      body {
+        font-family: "The Seasons", serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        width: 100vw;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      section {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+      }
+
+      section.visivel {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .banner {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .video-bg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+      }
+
+      .banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 0;
+      }
+
+      .banner-text {
+        position: absolute;
+        z-index: 1;
+        color: #decaaf;
+        text-align: center;
+        max-width: 800px;
+        padding: 20px;
+      }
+
+      .whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25d366;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+        z-index: 1000;
+      }
+
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+      }
+
+      .whatsapp-float img {
+        width: 50px;
+        height: 40px;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.15);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .pulse-animation {
+        animation: pulse 1s ease-in-out;
+      }
+
+      /* Service Detail Cards */
+      .service-detail-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        margin-bottom: 30px;
+      }
+
+      .service-header {
+        background: var(--primary-color);
+        color: white;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        margin-right: 20px;
+        color: var(--accent-color);
+      }
+
+      .service-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+      }
+
+      .service-content {
+        padding: 30px;
+      }
+
+      .service-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        color: var(--secondary-color);
+      }
+
+      .service-process {
+        margin-top: 30px;
+      }
+
+      .process-title {
+        font-size: 1.3rem;
+        color: var(--primary-color);
+        font-weight: bold;
+        margin-bottom: 15px;
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 5px;
+      }
+
+      .process-steps {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .process-step {
+        flex: 1;
+        min-width: 250px;
+        background: var(--background-color);
+        padding: 20px;
+        border-radius: 8px;
+        position: relative;
+      }
+
+      .step-number {
+        position: absolute;
+        top: -15px;
+        left: 20px;
+        background: var(--primary-color);
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .step-title {
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .step-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .service-benefits {
+        margin-top: 30px;
+      }
+
+      .benefits-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 15px;
+      }
+
+      .benefit-item {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .benefit-icon {
+        color: var(--accent-color);
+        margin-right: 10px;
+        font-size: 1.2rem;
+        margin-top: 3px;
+      }
+
+      .benefit-text {
+        font-size: 1rem;
+      }
+
+      .service-cta {
+        background: var(--accent-color);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      .service-cta-text {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .service-header {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .service-icon {
+          margin-right: 0;
+          margin-bottom: 15px;
+        }
+
+        .process-steps {
+          flex-direction: column;
+        }
+
+        .benefits-list {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header-container"></div>
+    <!-- Hero Section com imagem de fundo azul, marca d'água e título, semelhante ao Sobre Nós -->
+    <section
+      class="hero-section visivel"
+      style="
+        background: linear-gradient(
+            rgba(29, 40, 73, 0.85),
+            rgba(29, 40, 73, 0.85)
+          ),
+          url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')
+            no-repeat center center;
+        background-size: cover;
+        height: 45vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-color);
+        text-align: center;
+      "
+    >
+      <div class="container mx-auto px-6">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">Nossos Serviços</h1>
+        <p class="text-xl md:text-2xl max-w-2xl mx-auto">
+          Conheça as principais áreas de atuação do escritório
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 md:px-8 py-16">
+      <!-- Introduction -->
+      <section class="mb-20 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#1d2849] mb-6">
+          Nossa Abordagem Jurídica
+        </h2>
+        <p
+          class="text-lg md:text-xl text-[#3a3939] max-w-4xl mx-auto leading-relaxed"
+        >
+          No escritório Bonini & Bender, cada caso é tratado com a máxima
+          atenção e dedicação. Nossa metodologia combina expertise técnica com
+          uma abordagem humanizada, garantindo não apenas resultados jurídicos
+          eficazes, mas também uma experiência tranquila e transparente para
+          nossos clientes.
+        </p>
+      </section>
+
+      <!-- Service 1 - Trabalhista -->
+      <section class="service-detail-card">
+        <div class="service-header">
+          <div class="service-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h3 class="service-title">Direito Trabalhista</h3>
+        </div>
+
+        <div class="service-content">
+          <div class="service-description">
+            <p>
+              Oferecemos assessoria completa em questões trabalhistas tanto para
+              empregadores quanto para empregados. Nossa atuação abrange desde a
+              prevenção de litígios até a representação em ações judiciais
+              complexas, sempre com foco na proteção dos direitos e interesses
+              de nossos clientes.
+            </p>
+          </div>
+
+          <div class="service-process">
+            <h4 class="process-title">Nosso Processo de Atuação</h4>
+            <div class="process-steps">
+              <div class="process-step">
+                <div class="step-number">1</div>
+                <h5 class="step-title">Análise do Caso</h5>
+                <p class="step-description">
+                  Avaliação detalhada da situação trabalhista, documentação e
+                  possíveis violações de direitos.
+                </p>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">2</div>
+                <h5 class="step-title">Estratégia Jurídica</h5>
+                <p class="step-description">
+                  Definição da melhor abordagem: negociação extrajudicial,
+                  mediação ou ação judicial.
+                </p>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">3</div>
+                <h5 class="step-title">Atuação Especializada</h5>
+                <p class="step-description">
+                  Representação qualificada em todas as fases do processo, com
+                  acompanhamento personalizado.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-benefits">
+            <h4 class="process-title">Principais Benefícios</h4>
+            <div class="benefits-list">
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Atendimento personalizado para cada caso trabalhista
+                </p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Prevenção de passivos trabalhistas para empresas
+                </p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Maximização de direitos para trabalhadores
+                </p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Atualização constante sobre mudanças na legislação
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-cta">
+            <p class="service-cta-text">Precisa de assessoria trabalhista?</p>
+            <button class="button">
+              Fale com um especialista
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Service 2 - Previdenciário -->
+      <section class="service-detail-card">
+        <div class="service-header">
+          <div class="service-icon">
+            <i class="fas fa-hand-holding-usd"></i>
+          </div>
+          <h3 class="service-title">Direito Previdenciário</h3>
+        </div>
+
+        <div class="service-content">
+          <div class="service-description">
+            <p>
+              Atuamos em todas as fases do processo previdenciário, desde o
+              planejamento e requerimento administrativo de benefícios até ações
+              judiciais contra o INSS. Nossa expertise inclui aposentadorias
+              especiais, por invalidez, por tempo de contribuição,
+              auxílio-doença, revisões de benefícios e muito mais.
+            </p>
+          </div>
+
+          <div class="service-process">
+            <h4 class="process-title">Como Trabalhamos</h4>
+            <div class="process-steps">
+              <div class="process-step">
+                <div class="step-number">1</div>
+                <h5 class="step-title">Diagnóstico Previdenciário</h5>
+                <p class="step-description">
+                  Análise completa da situação do cliente para identificar todos
+                  os direitos previdenciários.
+                </p>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">2</div>
+                <h5 class="step-title">Preparação do Requerimento</h5>
+                <p class="step-description">
+                  Elaboração de toda documentação necessária com estratégia para
+                  maior chance de sucesso.
+                </p>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">3</div>
+                <h5 class="step-title">Acompanhamento Integral</h5>
+                <p class="step-description">
+                  Atuação em todas as fases, desde o requerimento administrativo
+                  até eventual ação judicial.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-benefits">
+            <h4 class="process-title">Vantagens do Nosso Serviço</h4>
+            <div class="benefits-list">
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Conhecimento profundo das regras previdenciárias
+                </p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Atualização constante sobre mudanças na legislação
+                </p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Taxas de sucesso acima da média do mercado
+                </p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Honorários somente em caso de sucesso (em ações judiciais)
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-cta">
+            <p class="service-cta-text">
+              Quer garantir seus direitos previdenciários?
+            </p>
+            <button class="button">
+              Agende uma avaliação
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Service 3 - Civil -->
+      <section class="service-detail-card">
+        <div class="service-header">
+          <div class="service-icon">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h3 class="service-title">Direito Civil</h3>
+        </div>
+
+        <div class="service-content">
+          <div class="service-description">
+            <p>
+              Nossa atuação em Direito Civil abrange contratos em geral,
+              responsabilidade civil, direito do consumidor, direito de família
+              e sucessões. Desenvolvemos soluções jurídicas personalizadas para
+              cada caso, com foco na prevenção de litígios e na resolução
+              eficiente de conflitos, seja por meio judicial ou extrajudicial.
+            </p>
+          </div>
+
+          <div class="service-process">
+            <h4 class="process-title">Metodologia de Atendimento</h4>
+            <div class="process-steps">
+              <div class="process-step">
+                <div class="step-number">1</div>
+                <h5 class="step-title">Análise Jurídica Detalhada</h5>
+                <p class="step-description">
+                  Estudo aprofundado do caso para identificar todas as questões
+                  jurídicas relevantes.
+                </p>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">2</div>
+                <h5 class="step-title">Definição de Estratégia</h5>
+                <p class="step-description">
+                  Escolha da melhor abordagem: negociação, mediação, arbitragem
+                  ou ação judicial.
+                </p>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">3</div>
+                <h5 class="step-title">Implementação e Acompanhamento</h5>
+                <p class="step-description">
+                  Execução da estratégia com monitoramento constante e ajustes
+                  quando necessários.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-benefits">
+            <h4 class="process-title">Diferenciais da Nossa Atuação</h4>
+            <div class="benefits-list">
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Elaboração e revisão de contratos com visão preventiva
+                </p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Atuação em inventários e partilhas com sensibilidade
+                </p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Defesa robusta em ações de responsabilidade civil
+                </p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Mediação de conflitos com alta taxa de resolução
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-cta">
+            <p class="service-cta-text">
+              Precisa de assistência em Direito Civil?
+            </p>
+            <button class="button">
+              Entre em contato
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Service 4 - Empresarial -->
+      <section class="service-detail-card">
+        <div class="service-header">
+          <div class="service-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3 class="service-title">Direito Empresarial</h3>
+        </div>
+
+        <div class="service-content">
+          <div class="service-description">
+            <p>
+              Oferecemos assessoria jurídica empresarial completa, desde a
+              constituição e estruturação de empresas até operações societárias
+              complexas, fusões, aquisições e reestruturações. Nossa equipe
+              especializada atua preventivamente para mitigar riscos e garantir
+              a segurança jurídica das operações empresariais.
+            </p>
+          </div>
+
+          <div class="service-process">
+            <h4 class="process-title">Nossa Abordagem Empresarial</h4>
+            <div class="process-steps">
+              <div class="process-step">
+                <div class="step-number">1</div>
+                <h5 class="step-title">Diagnóstico Empresarial</h5>
+                <p class="step-description">
+                  Avaliação completa da situação jurídica da empresa e
+                  identificação de pontos de atenção.
+                </p>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">2</div>
+                <h5 class="step-title">Planejamento Jurídico</h5>
+                <p class="step-description">
+                  Desenvolvimento de estratégias para otimização legal e redução
+                  de riscos.
+                </p>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">3</div>
+                <h5 class="step-title">Implementação e Monitoramento</h5>
+                <p class="step-description">
+                  Acompanhamento contínuo com ajustes conforme necessidades do
+                  negócio.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-benefits">
+            <h4 class="process-title">Benefícios para Sua Empresa</h4>
+            <div class="benefits-list">
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Redução de passivos e riscos jurídicos
+                </p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">Otimização de processos e contratos</p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Assessoria em operações societárias complexas
+                </p>
+              </div>
+              <div class="benefit-item">
+                <div class="benefit-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="benefit-text">
+                  Atendimento personalizado conforme porte e segmento
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-cta">
+            <p class="service-cta-text">
+              Sua empresa precisa de assessoria jurídica?
+            </p>
+            <button class="button">
+              Converse conosco
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Approach Section -->
+      <section class="mt-20 bg-[#1d2849] text-white p-10 rounded-lg">
+        <h2 class="text-3xl font-bold mb-8 text-center">
+          Nossa Metodologia de Trabalho
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="text-5xl mb-4 text-[#decaaf]">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Análise Profunda</h3>
+            <p>
+              Investigamos minuciosamente cada caso para identificar todas as
+              questões jurídicas relevantes e oportunidades de atuação.
+            </p>
+          </div>
+
+          <div class="text-center">
+            <div class="text-5xl mb-4 text-[#decaaf]">
+              <i class="fas fa-chess"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Estratégia Personalizada</h3>
+            <p>
+              Desenvolvemos planos de ação sob medida para cada cliente,
+              considerando seus objetivos específicos e particularidades do
+              caso.
+            </p>
+          </div>
+
+          <div class="text-center">
+            <div class="text-5xl mb-4 text-[#decaaf]">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Acompanhamento Contínuo</h3>
+            <p>
+              Mantemos nossos clientes informados em todas as etapas do
+              processo, com relatórios periódicos e disponibilidade para
+              esclarecimentos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing Section -->
+      <section class="mt-20">
+        <h2 class="text-3xl font-bold text-[#1d2849] mb-8 text-center">
+          Nossos Modelos de Honorários
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded-lg shadow-md border-t-4 border-[#decaaf]"
+          >
+            <h3 class="text-xl font-bold text-[#1d2849] mb-4">
+              Honorários Fixos
+            </h3>
+            <p class="mb-6">
+              Valor predeterminado para serviços específicos, com escopo e
+              prazos claramente definidos.
+            </p>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check text-[#decaaf] mr-2 mt-1"></i>
+                <span>Previsibilidade de custos</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-[#decaaf] mr-2 mt-1"></i>
+                <span>Ideal para serviços pontuais</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-[#decaaf] mr-2 mt-1"></i>
+                <span>Sem surpresas no orçamento</span>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-lg shadow-md border-t-4 border-[#f4b400]"
+          >
+            <h3 class="text-xl font-bold text-[#1d2849] mb-4">
+              Honorários por Hora
+            </h3>
+            <p class="mb-6">
+              Cobrança baseada no tempo efetivamente dedicado ao caso, com
+              relatórios detalhados.
+            </p>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check text-[#f4b400] mr-2 mt-1"></i>
+                <span>Transparência total</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-[#f4b400] mr-2 mt-1"></i>
+                <span>Ideal para demandas variáveis</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-[#f4b400] mr-2 mt-1"></i>
+                <span>Controle sobre os custos</span>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-lg shadow-md border-t-4 border-[#1d2849]"
+          >
+            <h3 class="text-xl font-bold text-[#1d2849] mb-4">
+              Contingência (Sucesso)
+            </h3>
+            <p class="mb-6">
+              Honorários vinculados ao resultado positivo do caso, sem custos
+              iniciais para o cliente.
+            </p>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check text-[#1d2849] mr-2 mt-1"></i>
+                <span>Alinhamento de interesses</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-[#1d2849] mr-2 mt-1"></i>
+                <span>Ideal para ações judiciais</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-[#1d2849] mr-2 mt-1"></i>
+                <span>Pagamento somente se ganhar</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center mt-10">
+          <p class="text-lg">
+            Entre em contato para discutirmos o modelo mais adequado para o seu
+            caso.
+          </p>
+          <button class="button">
+            Conversar sobre honorários
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- WhatsApp Float Button -->
+    <button class="whatsapp-float" id="whatsappButton">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        alt="WhatsApp"
+      />
+    </button>
+
+    <div id="footer-container"></div>
+    <script defer src="scripts/script.js"></script>
+  </body>
+</html>
