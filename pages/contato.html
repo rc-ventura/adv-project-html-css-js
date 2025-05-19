@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato - Bonini & Bender Advocacia</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #1d2849;
+        --primary-color-hover: #16203a;
+        --accent-color: #decbaf;
+        --background-color: #f8f9fa;
+        --text-color: #333333;
+      }
+      body {
+        font-family: "Georgia", serif;
+        color: var(--text-color);
+        background-color: var(--background-color);
+      }
+      .hero-section {
+        background: linear-gradient(
+            rgba(29, 40, 73, 0.85),
+            rgba(29, 40, 73, 0.85)
+          ),
+          url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")
+            no-repeat center center;
+        background-size: cover;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-color);
+        text-align: center;
+        position: relative;
+      }
+      .hero-content {
+        max-width: 800px;
+        padding: 0 20px;
+        animation: fadeIn 1.5s ease-out;
+      }
+      .hero-section h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 3rem;
+        position: relative;
+        display: inline-block;
+      }
+      .section-title:after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background-color: var(--accent-color);
+      }
+      .contact-section {
+        padding: 6rem 0;
+      }
+      .contact-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 4rem;
+      }
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .contact-card {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+      .contact-card:hover {
+        transform: translateY(-5px);
+      }
+      .contact-icon {
+        font-size: 2rem;
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+      }
+      .contact-card h3 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+      .contact-card p,
+      .contact-card a {
+        color: var(--text-color);
+        line-height: 1.7;
+        transition: color 0.3s ease;
+      }
+      .contact-card a:hover {
+        color: var(--primary-color);
+      }
+      .form-container {
+        background-color: white;
+        padding: 3rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+      .form-control {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+      .form-control:focus {
+        outline: none;
+        border-color: var(--accent-color);
+      }
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+      }
+      .button {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--accent-color);
+        padding: 12px 30px;
+        border-radius: 5px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border: 2px solid var(--primary-color);
+        cursor: pointer;
+      }
+      .button:hover {
+        background-color: transparent;
+        color: var(--primary-color);
+      }
+      .map-container {
+        height: 400px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 4rem;
+      }
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        transition: all 0.3s ease;
+      }
+      .social-link:hover {
+        background-color: var(--primary-color-hover);
+        transform: translateY(-3px);
+      }
+      .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25d366;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+        font-size: 1.8rem;
+        transition: all 0.3s ease;
+      }
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 768px) {
+        .hero-section {
+          height: 40vh;
+        }
+        .hero-section h1 {
+          font-size: 2.5rem;
+        }
+        .section-title {
+          font-size: 2rem;
+        }
+        .contact-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header (será inserido pelo JavaScript) -->
+    <div id="header-container"></div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Entre em Contato</h1>
+        <p>Estamos aqui para ajudar com suas questões jurídicas</p>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container mx-auto px-4">
+        <h2 class="section-title text-center">Nossos Canais de Atendimento</h2>
+        <div class="contact-container">
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <!-- <div class="contact-card"> -->
+            <!-- <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <h3>Nosso Escritório</h3>
+              <p>
+                Rua das Palmeiras, 1234<br />
+                Centro, Florianópolis - SC<br />
+                CEP: 88010-000
+              </p>
+            </div> -->
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <h3>Telefones</h3>
+              <p>
+                <!-- <strong>Fixo:</strong> (48) 3222-5555<br /> -->
+                <strong>Celular:</strong> (48) 99999-9999<br />
+                <strong>WhatsApp:</strong> (48) 99999-9999
+              </p>
+              <div class="social-links">
+                <a
+                  href="https://wa.me/5548999999999"
+                  class="social-link"
+                  title="WhatsApp"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="tel:+554832225555" class="social-link" title="Ligar">
+                  <i class="fas fa-phone"></i>
+                </a>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <h3>E-mail</h3>
+              <p>
+                <strong>Atendimento:</strong> contato@boniniebender.com.br<br />
+                <!-- <strong>Jurídico:</strong> juridico@boniniebender.com.br<br />
+                <strong>RH:</strong> rh@boniniebender.com.br -->
+              </p>
+              <div class="social-links">
+                <a
+                  href="mailto:contato@boniniebenderadvocacia.com.br"
+                  class="social-link"
+                  title="E-mail"
+                >
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <h3>Horário de Funcionamento</h3>
+              <p>
+                <strong>Segunda a Sexta:</strong> 8h às 18h<br />
+                <strong>Sábado:</strong> 9h às 12h<br />
+                <strong>Domingo:</strong> Fechado
+              </p>
+            </div>
+          </div>
+          <!-- Contact Form -->
+          <div class="form-container">
+            <h3
+              class="text-2xl font-bold mb-6 text-center"
+              style="color: var(--primary-color)"
+            >
+              Envie sua Mensagem
+            </h3>
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Nome Completo</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="subject">Assunto</label>
+                <select
+                  id="subject"
+                  name="subject"
+                  class="form-control"
+                  required
+                >
+                  <option value="">Selecione um assunto</option>
+                  <option value="consulta">Consulta Jurídica</option>
+                  <option value="contratacao">Contratação de Serviços</option>
+                  <option value="reclamacao">Reclamação</option>
+                  <option value="elogio">Elogio</option>
+                  <option value="outro">Outro</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Mensagem</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  class="form-control"
+                  required
+                ></textarea>
+              </div>
+              <div class="form-group flex items-center">
+                <input
+                  type="checkbox"
+                  id="consent"
+                  name="consent"
+                  class="mr-2"
+                  required
+                />
+                <label for="consent"
+                  >Concordo com a política de privacidade</label
+                >
+              </div>
+              <div class="text-center mt-6">
+                <button type="submit" class="button">
+                  Enviar Mensagem <i class="fas fa-paper-plane ml-2"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Map Section -->
+        <!-- <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3535.998346191758!2d-48.54958892468758!3d-27.59599987625006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952738248efc6a51%3A0x4b371a5f19c8e6e!2sCentro%2C%20Florian%C3%B3polis%20-%20SC!5e0!3m2!1spt-BR!2sbr!4v1689876543210"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div> -->
+      </div>
+    </section>
+    <!-- Botão Flutuante do WhatsApp -->
+    <div data-include="../components/whatsapp_button.html"></div>
+
+    <!-- Footer (será inserido pelo JavaScript) -->
+    <div id="footer-container"></div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      // Inicializa o EmailJS com sua chave pública
+      emailjs.init("wjGU3ZV13Y3VYsnzZ");
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("contactForm");
+        if (!form) return;
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          emailjs.sendForm("service_7b4mebp", "template_1l6i3vr", form).then(
+            function () {
+              alert("Mensagem enviada com sucesso!");
+              form.reset();
+            },
+            function (error) {
+              alert("Erro ao enviar: " + JSON.stringify(error));
+              form.reset();
+            }
+          );
+        });
+      });
+    </script> -->
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script src="../scripts/components.js"></script>
+
+    <script src="../scripts/animations.js"></script>
+    <script defer src="../scripts/script.js"></script>
+  </body>
+</html>

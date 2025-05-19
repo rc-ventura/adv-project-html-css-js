@@ -147,19 +147,19 @@ nav {
   justify-content: center; /* Centraliza os links no header */
 }
 
-nav ul {
+#header-container header nav ul {
   list-style: none;
   display: flex;
-  gap: 3rem; /* Ajusta o espaçamento entre links */
+  gap: 4rem; /* Ajusta o espaçamento entre links */
   margin: 0;
   padding: 0;
   align-items: center; /* Mantém alinhado verticalmente */
 }
 
-nav ul li a {
+#header-container header nav ul li a {
   color: var(--accent-color);
   text-decoration: none;
-  font-size: 18px; /* Aumenta o tamanho da fonte */
+  font-size: 1.3rem; /* Aumenta o tamanho da fonte */
   font-weight: bold;
 }
 
@@ -253,13 +253,15 @@ nav ul li a {
 }
 
 .banner-text h1 {
-  font-size: 2.4rem;
+  font-size: 2.8rem;
   margin-bottom: 20px;
+  font-weight: 700;
 }
 
 .banner-text p {
   font-size: 1.3rem;
   margin-bottom: 40px;
+  font-weight: 700;
 }
 
 /* RESPONSIVIDADE */
@@ -446,7 +448,7 @@ nav ul li a {
 }
 
 .sobre-imagem.direita .texto-container p {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: var(--primary-color);
   text-align: center;
   margin: 0;
@@ -565,7 +567,7 @@ nav ul li a {
   border: white 0.5px solid;
 }
 
-.diferenciais {
+/* .diferenciais {
   background-color: var(--primary-color);
   padding: 50px 20px;
 }
@@ -582,9 +584,15 @@ nav ul li a {
   text-align: left;
 }
 .diferenciais-texto h2 {
-  color: var(--accent-color);
-  margin-bottom: 10px;
+  color: var(--accent-color) !important;
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin-bottom: 24px !important;
+  text-align: left;
 }
+
 .diferenciais-texto p {
   color: var(--accent-color);
   font-size: 18px;
@@ -615,8 +623,10 @@ nav ul li a {
   max-width: 100%;
 }
 .diferencial img {
-  width: 100px;
-  margin-bottom: 10px;
+  width: 130px !important;
+  max-width: 160px;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08));
 }
 .diferencial-full img {
   width: 80px;
@@ -641,7 +651,7 @@ nav ul li a {
     max-width: 100%;
     min-width: 0;
   }
-}
+} */
 
 .depoimentos {
   background-color: var(--background-color);
@@ -650,8 +660,20 @@ nav ul li a {
 }
 
 .depoimentos h2 {
-  color: var(--primary-color);
-  margin-bottom: 5px;
+  color: var(--primary-color) !important;
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 20px !important;
+  opacity: 1 !important;
+  display: block !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.depoimentos p {
+  color: var(--primary-color) !important;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
 }
 
 .subtitulo {
