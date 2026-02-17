@@ -1,87 +1,60 @@
-# Bonini & Bender Advocacia - Website
+# Bender Advocacia - Website
 
 ## 📌 Sobre o Projeto
-Este repositório contém o código-fonte do site do escritório **Bonini & Bender Advocacia**, que inclui:
-- **Banner animado** com vídeo de fundo e transição de texto.
-- **Animação de seções ao rolar a página**.
-- **Design responsivo** para garantir boa experiência em diferentes dispositivos.
+Este repositório contém o código-fonte do site do escritório **Bender Advocacia**. O projeto foi desenvolvido com foco em uma experiência visual moderna e interativa, utilizando animações suaves e componentes modulares para facilitar a manutenção e escalabilidade.
 
 ## 🚀 Funcionalidades
-✅ **Banner com animação** - O texto aparece quando o vídeo atinge a metade e desaparece próximo ao final.  
-✅ **Seções animadas** - As seções aparecem gradualmente quando o usuário rola a página.  
-✅ **Design responsivo** - Adaptação para diferentes telas e dispositivos.  
-✅ **Código modular** - Separação clara entre animação do banner e das seções.  
+✅ **Banner Cinematográfico** - Vídeo de fundo com textos e botões animados que sincronizam perfeitamente com o tempo de reprodução.  
+✅ **Navegação Dinâmica** - Cabeçalho (Header) e Rodapé (Footer) carregados modularmente via JavaScript.  
+✅ **Animações ao Rolar (Scroll)** - As seções "despertam" e surgem na tela conforme o usuário navega.  
+✅ **Formulário de Contato Inteligente** - Integração completa com **EmailJS** para envio de mensagens diretamente pelo site.  
+✅ **Botão WhatsApp Interativo** - Botão flutuante com animação de "pulso" para incentivar o contato rápido.  
+✅ **Design Totalmente Responsivo** - Layout otimizado para celulares, tablets e desktops.
 
 ## 📂 Estrutura do Projeto
 ```
-📁 projeto-bonini-bender
-│── 📁 assets        # Imagens, vídeos e fontes do projeto
-│── 📁 css           # Arquivos de estilo CSS
-│── 📁 scripts       # Scripts JavaScript
-│── index.html       # Página principal do site
-│── README.md        # Documentação do projeto
+📁 bender-project
+│── 📁 assets          # Imagens, vídeos, ícones e identidade visual
+│── 📁 components      # Componentes reutilizáveis (Header, Footer, Botão WhatsApp)
+│── 📁 css             # Estilização (styles.css, services.css, sobre-nos.css)
+│── 📁 pages           # Páginas internas (Contato, Serviços, Sobre)
+│── 📁 scripts         # Lógica JavaScript separada por responsabilidade
+│   │── animations.js  # Lógica de animação do banner e scroll reveal
+│   │── components.js  # Script para carregar componentes HTML dinamicamente
+│   │── script.js      # Configurações globais, menu mobile e EmailJS
+│── index.html         # Página inicial (Home)
+│── README.md          # Documentação do projeto
 ```
 
 ## 🛠️ Tecnologias Utilizadas
-- **HTML5**
-- **CSS3**
-- **JavaScript (ES6+)**
+- **HTML5** (Semântico)
+- **CSS3** (Flexbox, Grid, Animations)
+- **JavaScript (ES6+)** (Fetch API, DOM Manipulation)
+- **EmailJS** (Serviço de envio de emails frontend)
 
-## 🎬 Como Funciona a Animação do Banner?
-1. O banner inicia com `opacity: 0`.
-2. Quando o vídeo atinge a **metade**, o texto aparece gradualmente.
-3. Quando o vídeo está **próximo do fim**, o texto desaparece.
-4. O ciclo se repete ao reiniciar o vídeo.
+## 🎬 Como Funcionam as Animações?
 
-## 📜 Código Principal
-### **Animação do Banner (`script.js`)**
-```javascript
-document.addEventListener("DOMContentLoaded", function () {
-    function animarBanner() {
-        const video = document.querySelector(".video-bg");
-        const heading = document.getElementById("banner-heading");
-        const paragraph = document.getElementById("banner-paragraph");
-        const button = document.getElementById("banner-button");
+### 🎥 Banner (`animations.js`)
+A animação do banner é sincronizada com o tempo do vídeo de fundo (`video.currentTime`):
+1.  **Entrada:** Quando o vídeo atinge **1/3** da sua duração, o título, parágrafo e botão aparecem com um efeito de *fade-in* e *slide-up* sequencial.
+2.  **Saída:** Quando faltam **0.45 segundos** para o vídeo acabar, os elementos desaparecem suavemente.
+3.  **Loop:** O processo se repete a cada loop do vídeo.
 
-        function esconderBanner() {
-            heading.style.opacity = "0";
-            paragraph.style.opacity = "0";
-            button.style.opacity = "0";
-        }
-
-        function mostrarBanner() {
-            setTimeout(() => heading.style.opacity = "1", 500);
-            setTimeout(() => paragraph.style.opacity = "1", 1000);
-            setTimeout(() => button.style.opacity = "1", 1200);
-        }
-
-        esconderBanner();
-        
-        video.addEventListener("timeupdate", function () {
-            if (video.currentTime >= video.duration / 2 && heading.style.opacity === "0") {
-                mostrarBanner();
-            }
-            if (video.currentTime >= video.duration - 0.45) {
-                esconderBanner();
-            }
-        });
-    }
-
-    animarBanner();
-});
-```
+### 🔄 Carregamento Modular
+Para evitar repetição de código, o `header` e `footer` são arquivos HTML separados carregados via `fetch` pelo `script.js` e `components.js`. Isso facilita a manutenção, pois uma alteração no menu reflete em todas as páginas.
 
 ## 🎯 Como Rodar o Projeto?
-1. Clone este repositório:
-   ```sh
-   git clone https://github.com/rc-ventura/projeto-bonini-bender.git
-   ```
-2. Abra o arquivo `index.html` no navegador.
-3. Certifique-se de que os arquivos CSS e JS estão corretamente linkados.
+1.  Clone este repositório:
+    ```sh
+    git clone https://github.com/rc-ventura/adv-project-html-css-js.git
+    ```
+2.  Abra a pasta do projeto.
+3.  Para testar todas as funcionalidades (especialmente o carregamento de componentes via `fetch`), **é necessário usar um servidor local**.
+    - Se estiver usando o **VS Code**, instale a extensão **Live Server** e clique em "Go Live".
+    - Ou rode um servidor simples com Python: `python -m http.server`
 
 ## 📌 Autor
 Desenvolvido por **Ventura** 🚀
 
 ## 📜 Licença
 Este projeto está sob a licença MIT. Sinta-se livre para usá-lo e melhorá-lo! 🎯
-
