@@ -233,10 +233,12 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 3rem;
   margin-top: 4rem;
+  justify-items: center;
 }
 .team-card {
   background-color: white;
   border-radius: 10px;
+  width: 50%;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
