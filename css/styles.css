@@ -543,28 +543,43 @@ nav {
   text-align: center;
   margin: 20px;
   border: 0.5px solid white;
+  padding: 28px 22px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.service-image {
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+}
+
+.service-icon {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 16px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 999px;
+  background: rgba(29, 40, 73, 0.1);
 }
 
-.service-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.service-icon i {
+  font-size: 2.4rem;
+  color: var(--primary-color);
 }
 
-.service-caption {
-  background-color: var(--primary-color);
-  padding: 10px;
-  font-weight: normal;
-  color: white;
-  border: white 0.5px solid;
+.service-title {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.service-description {
+  color: var(--secondary-color);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* .diferenciais {
