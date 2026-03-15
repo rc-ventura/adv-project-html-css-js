@@ -76,6 +76,11 @@
   font-size: 1.1rem;
 }
 
+.team-section .about-content {
+  padding-left: 2rem;
+  margin-left: 2rem;
+}
+
 @media (max-width: 900px) {
   .hero-section h1 {
     font-size: 2rem;
@@ -102,6 +107,11 @@
   .value-card {
     padding: 0.8rem 0.4rem;
     margin: 0.5rem 0;
+  }
+
+  .team-section .about-content {
+    padding-left: 0;
+    margin-left: 0;
   }
 }
 
