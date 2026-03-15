@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- ========================================== -->
+    <!-- SEO: MUDE O TÍTULO E A DESCRIÇÃO AQUI -->
+    <!-- ========================================== -->
+    <title>Título do Seu Artigo Aqui - Bender Advocacia</title>
+    <meta
+      name="description"
+      content="Escreva aqui um resumo de 1 ou 2 frases sobre o post. Isso é o que o Google mostra na busca."
+    />
+    <!-- ========================================== -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Como este arquivo está dentro da pasta /blog, voltamos duas pastas para acessar o CSS -->
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <link rel="stylesheet" href="../../css/blog.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <main class="post-main">
+      <article class="post-article">
+        <!-- CABEÇALHO DO POST -->
+        <div class="post-header">
+          <span class="post-category">Categoria do Post</span>
+          <h1 class="post-title">Substitua este texto pelo título principal do seu artigo</h1>
+          
+          <div class="post-meta-info">
+            <span class="post-author"><i class="fas fa-user-circle"></i> Dra. Laura Bender</span>
+            <span class="post-date"><i class="far fa-calendar-alt"></i> 10 de Novembro, 2023</span>
+          </div>
+          
+          <div class="post-cover-image">
+            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Descrição da imagem de capa" />
+          </div>
+        </div>
+
+        <!-- CORPO DO TEXTO -->
+        <div class="post-content">
+          <p class="post-lead">Este é o parágrafo de introdução. Ele geralmente tem um destaque sutil para prender a atenção do leitor logo no início do texto.</p>
+
+          <p>Aqui começa o texto do seu artigo. Você pode escrever parágrafos normais usando a tag <code>&lt;p&gt;</code>. A tipografia e os espaçamentos já estão configurados para facilitar a leitura no computador e no celular.</p>
+
+          <h2>Subtítulos devem usar H2</h2>
+          <p>Sempre que for mudar de tópico dentro do artigo, use um <code>&lt;h2&gt;</code>. Isso ajuda muito o Google a entender a estrutura do seu texto.</p>
+          
+          <ul>
+            <li>Você pode fazer listas de itens</li>
+            <li>Como esta aqui</li>
+            <li>Para facilitar a leitura dinâmica</li>
+          </ul>
+
+          <p>Caso queira dar destaque a uma citação ou lei, você pode usar um bloco de citação:</p>
+
+          <blockquote>
+            "A justiça é o vínculo das sociedades humanas; as leis emanadas da justiça são a alma de um povo."
+          </blockquote>
+
+          <h3>Um tópico menor (H3)</h3>
+          <p>Se precisar de um subtópico dentro do H2, use o H3. Lembre-se de sempre manter os textos em blocos curtos para a leitura não ficar cansativa na tela do celular.</p>
+
+          <p>Para adicionar imagens no meio do texto, basta usar a tag de imagem normal. O CSS fará com que ela se ajuste automaticamente na tela.</p>
+        </div>
+        
+        <!-- FOOTER DO POST (Voltar) -->
+        <footer class="post-footer">
+          <a href="../blog.html" class="button button-outline"><i class="fas fa-arrow-left"></i> Voltar para o Blog</a>
+        </footer>
+
+      </article>
+    </main>
+
+    <!-- Botão WhatsApp -->
+    <div data-include="../../components/whatsapp_button.html"></div>
+
+    <!-- Scripts -->
+    <script src="../../scripts/components.js"></script>
+    <script src="../../scripts/animations.js"></script>
+    <script defer src="../../scripts/script.js"></script>
+    
+    <!-- Footer -->
+    <div id="footer-container"></div>
+  </body>
+</html>
