@@ -43,7 +43,7 @@ function initializeWhatsAppButton() {
 
     whatsappButton.addEventListener("click", function () {
       window.open(
-        "https://wa.me/55548999747150?text=Olá, gostaria de mais informações!",
+        "https://wa.me/5548999747150?text=Olá, gostaria de mais informações!",
         "_blank"
       );
     });
